@@ -1,7 +1,8 @@
 
 #----------------------------------------------------------------
-# An example with simulated data.
+# Simulating data.
 #----------------------------------------------------------------
+
 set.seed(123)
 n <- 200
 # covariate 1 and 2
@@ -30,9 +31,20 @@ Dat <- data.frame(OT,delta,X1,X2)
 #----------------------------------------------------------------
 # Desired link function and its first and second derivatives.
 #----------------------------------------------------------------
+
 eta=exp;deta=exp;ddeta=exp
 #eta=function(...){exp(sin(...))};deta=function(...){eta(...)*cos(...)};ddeta=function(...){deta(...)*cos(...)-eta(...)*sin(...)}
 g=function(x,betA,ETA=eta) {as.vector(ETA(t(betA)%*%x))}
 dg=function(x,betA) x*g(x,betA,ETA=deta)
 ddg=function(x,betA) (x%*%t(x))*g(x,betA,ETA=ddeta)
 #----------------------------------------------------------------
+
+#----------------------------------------------------------------
+# Getting the estimated parameters and there variances.
+#----------------------------------------------------------------
+
+source("Prog.R")
+estF(Dat)
+
+
+

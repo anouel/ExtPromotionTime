@@ -2,8 +2,9 @@
 
 
 #----------------------------------------------------------------
-# needed R packages.
+# Needed R packages.
 #----------------------------------------------------------------
+
 library('survival')
 library("optimx")
 # optimx options
@@ -13,7 +14,7 @@ opts <- list( "algorithm" = "NLOPT_LD_AUGLAG","xtol_rel"  = 1.0e-14,"maxeval"   
 
 
 #----------------------------------------------------------------
-# Some utility functions
+# Some utility functions.
 #----------------------------------------------------------------
 Q=function(Vec,Delta,W)
 {
@@ -71,8 +72,9 @@ ddPPrfLogLik=function(...){-ddPrfLogLik(...)}
 
 
 #----------------------------------------------------------------
-# The main function
+# The main function for estimating the parameters of the model and there variances. 
 #----------------------------------------------------------------
+
 estF<-function(data)
 {
   OT<-data[,1];delta<-data[,2];X<-data[,-c(1,2)]
